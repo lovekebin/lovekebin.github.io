@@ -14,6 +14,11 @@
 <script src="js/jquery.easyfader.min.js"></script>
 <script src="js/scrollReveal.js"></script>
 <script src="js/common.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/app.js"></script>
+<script src="js/comments.js"></script>
+<script src="js/nprogress.js"></script>
+
 <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
 <![endif]-->
@@ -34,13 +39,15 @@
           <li><a href="share.html">...</a></li>
         </ul>
       </li>
-      <li><a href="list.html">时光</a>
+      
+<!--       <li><a href="list.html">时光</a>
         <ul class="sub-nav">
           <li><a href="list.html">当下</a></li>
           <li><a href="list.html">小记</a></li>
           <li><a href="list.html">未来</a></li>
         </ul>
-      </li>
+      </li> -->
+      
       <li><a href="life.html">慢生活</a>
         <ul class="sub-nav">
           <li><a href="life.html">慢一点</a></li>
@@ -50,12 +57,11 @@
       </li>
       
       <!-- 注释
-      <li><a href="time.html">时间轴</a> </li>
-      
       <li><a href="info.html">内容页</a> </li>-->
       
+      <li><a href="time.html">时间轴</a> </li>
       <li><a href="about.html">关于</a> </li>
-      <li><a href="gbook.html">留言</a> </li>
+      <li><a href="comment.html">留言</a> </li>
       <!--search begin-->
       <div id="search_bar" class="search_bar">
         <form  id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
@@ -84,14 +90,16 @@
           <li><a href="share.html">...</a></li>
         </ul>
       </dd>
-      <dt class="list_dt"> <a href="#">时光</a> </dt>
+      
+<!--       <dt class="list_dt"> <a href="#">时光</a> </dt>
       <dd class="list_dd">
         <ul>
           <li><a href="list.html">当下</a></li>
           <li><a href="list.html">小记</a></li>
           <li><a href="list.html">未来</a></li>
         </ul>
-      </dd>
+      </dd> -->
+      
       <dt class="list_dt"> <a href="#">慢生活</a> </dt>
       <dd class="list_dd">
         <ul>
@@ -101,11 +109,9 @@
         </ul>
       </dd>
       
-      <!-- 注释
       <dt class="list_dt"> <a href="time.html">时间轴</a> </dt>
-       -->
       <dt class="list_dt"> <a href="about.html">关于</a> </dt>
-      <dt class="list_dt"> <a href="gbook.html">留言</a> </dt>
+      <dt class="list_dt"> <a href="comment.html">留言</a> </dt>
     </dl>
   </div>
   <!--mnav end--> 
@@ -118,9 +124,9 @@
   <div class="news_infos">
     <ul>
     
-   <div class="detail-box">
+<!--    <div class="detail-box">
          <div class="visitor">
-             <img id="avatar_img" src="https://q.qlogo.cn/headimg_dl?dst_uin=547241650&amp;spec=100" height="42" width="42" class="avatar-42">
+             <img id="avatar_img" src="https://q.qlogo.cn/headimg_dl?dst_uin=921888000&amp;spec=100" height="42" width="42" class="avatar-42">
          </div>
          <form class="commentform" action="/comment" method="post" id="comment-form">
              <div class="author-info edit-on">
@@ -142,7 +148,329 @@
                  <li class="middle"><button type="submit" class="commentbutton">提交</button></li>
              </ul>
          </form>
-     </div>
+     </div> -->
+     
+
+     
+     
+         <div class="article-section">
+        <div class="Uu-box article-box">
+            <div class="article-section-body">
+                <div class="Uu-article">
+                   <h4>留下你的足迹吧</h4>
+                   <p>❀感谢相遇</p>
+      <div id="comment" class="comment comment-main">
+                            <div style="color: rgb(241, 115, 106);margin-top: 20px;">❀发表评论❀</div>
+                            <div style="margin-top: 20px;">
+                                <form class="commentform" id="comment-form">
+                                    <input name="sid" type="hidden" value="-1">
+                                    <div id="user-name-content" class="user-name-content">欢迎您：<i class="ri-edit-fill"></i> <b id="user-name" style="color:#fa889b;"></b></div>
+                                    <div style="display: flex">
+                                        <img id="avatar" src="images/Profile picture.jpg" height="42" width="42" class="avatar-42"/>
+                                        <!-- <form class="commentform" action="/comment" method="post" id="comment-form"> -->
+                                        <div style="width: 100%; margin-left: 5px;">
+                                            <div class="form-group" id="user-info" style="display: block; overflow: hidden">
+                                                <input type="text" name="qq" id="qq" placeholder="QQ（可获取头像和昵称）"/>
+                                                <input type="text" name="nickname" id="nickname" placeholder="自动获取" autocomplete="off" readonly/>
+                                            </div>
+                                            
+                                            <div class="comment-textarea" style="margin-top: 5px">
+                                                <textarea id="comment-textarea" name="content" placeholder="既然来了就评论一下呗" style="height: 50px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul class="comment-submit">
+                                        <button id="submitCommentBtn" type="button" class="commentbutton">提交</button>
+                                    </ul>
+                                </form>
+                            </div>
+                            <ul id="comment-ul" class="comment"></ul>
+                        </div>
+                        
+                        
+                        
+                        <script>
+                            var sid=-1;
+                        </script>
+                        <script>
+                            $(function () {
+                                var UuNickName=Core.getCookie("uu-username");
+                                var UuQQ=Core.getCookie("uu-qq");
+                                var UuAvatar=Core.getCookie("uu-avatar");
+                                if(UuNickName!=""){
+                                    $("#user-name").text(UuNickName);
+                                    $("#nickname").val(UuNickName);
+                                    $("#qq").val(UuQQ);
+                                    if(UuAvatar!=""){
+                                        $("#avatar").attr("src",UuAvatar);
+                                    }
+                                    $("#user-name-content").css("display","block");
+                                }else{
+                                    //用户信息input区域
+                                    $("#user-info").css("display","block");
+                                }
+                                //qq输入框失去焦点
+                                $("#qq").blur(function(){
+                                    var qq=$("#qq").val();
+                                    if(qq.length > 0){
+                                        if(!isNaN(qq)){
+                                            Core.getQqInfo(qq,function (data) {
+                                                var name= data.name;
+                                                var avatar = "https://q1.qlogo.cn/g?b=qq&nk="+qq+"&s=100";
+                                                $("#nickname").val(name);
+                                                $("#user-name").text(name);
+                                                $("#avatar").attr("src", avatar);
+                                                Core.setCookie("uu-username",name,30);
+                                                Core.setCookie("uu-qq",qq,30);
+                                                Core.setCookie("uu-avatar",avatar,30);
+                                                UuNickName=name;
+                                                UuQQ=qq;
+                                                UuAvatar=avatar;
+                                            });
+                                        }else{
+                                            layer.msg("QQ格式不正确")
+                                        }
+                                    }
+                                });
+                                function init(pageNumber) {
+                                    Core.postAjax("/uu/api/comments",{"sid":sid,"pageNumber": (pageNumber==null? 1 : pageNumber),"status":1},function (data) {
+                                        var commentOne="";
+                                        if(data.list.length==0){
+                                            commentOne+='<div class="no-comment">暂无评论，快来占领宝座</div>';
+                                            $("#comment-ul").append(commentOne);
+                                        }else{
+                                            $.each(data.list,function (index,value) {
+                                                commentOne +=
+                                                    '<li>'+
+                                                    '	<div class="comment-body" id="comment-'+value.id+'">'+
+                                                    '		<div class="comment-user-img">'+
+                                                    '			<img src="'+(value.avatar||"/images/Profile picture.jpg")+'" onerror="this.src=\'/images/Profile picture.jpg\'" />'+
+                                                    '		</div>'+
+                                                    '		<div class="comment-info">'+
+                                                    '			<div class="comment-top">'+
+                                                    '				<span class="comment-nickname">'+
+                                                    '					<a href="javascript:void(0)">'+value.nickname+'</a>'+
+                                                    '				</span>'+
+                                                    '				<span class="comment-time">'+value.createTime+
+                                                    '				</span>'+
+                                                    '			</div>'+
+                                                    '           <div class="comment-content">';
+                                                if(value.parent!=null){
+                                                    commentOne +=
+                                                        '<div class="comment-parent">'+
+                                                        '	<div class="comment-parent-user"><a class="comment-link" data-link="comment-'+value.parent.id+'">回复：'+value.parent.nickname+'</a></div>'+
+                                                        '	<div class="comment-parent-content">'+value.parent.content+'</div>'+
+                                                        '</div> ';
+                                                }
+                                                commentOne +='<div class="comment-content-text">'+value.content+'</div>'+
+                                                    '			</div>'+
+                                                    '			<div class="comment-footer">'+
+                                                    '				<span class="reply" style="color: #a5a5f9" reply-id="'+value.id+'">回复</span>'+
+                                                    '				<span class="cancel-reply" style="display: none;color: #a5a5f9;">取消回复</span>'+
+                                                    '				<span class="comment-support"><span>赞 </span><span class="count" biz-id="'+value.id+'">'+value.loveCount+'</span></span>'+
+                                                    '			</div>'+
+                                                    '		</div>'+
+                                                    '	</div> '+
+                                                    '</li>';
+                                            })
+                                            $("#comment-more").remove();
+                                            if(data.hasNextPage){
+                                                commentOne+='<div id="comment-more" data-page="'+data.nextPage+'" class="comment-more"><i class="ri-refresh-line"></i></div>'
+                                            }
+                                            $("#comment-ul").append(commentOne);
+                                            /*加载更多*/
+                                            $("#comment-more").click(function () {
+                                                init($(this).attr("data-page"));
+                                            })
+                                            /*link至评论*/
+                                            $(".comment-link").click(function () {
+                                                var commentLinkId = $(this).attr("data-link");
+                                                $("html,body").animate({
+                                                    scrollTop:$("#"+commentLinkId).offset().top-55},{duration: 300,easing: "swing"})
+                                            })
+                                            $(".reply").click(function () {
+                                                var replyId=$(this).attr("reply-id");
+                                                if($("#reply-comment-form").length>0){
+                                                    $replyForm=$("#reply-comment-form");
+                                                    $("#reply-comment-form").remove();
+                                                    $(this).parent().after($replyForm);
+                                                    $("#reply-comment-form").show();
+                                                    $(".reply[style='display: none;']").next().hide();
+                                                    $(".reply[style='display: none;']").show();
+                                                    $("#replyId").val(replyId);
+                                                }else{
+                                                    var replyForm =
+                                                        '<form id="reply-comment-form" class="form-horizontal">'+
+                                                        '   <input name="sid" type="hidden" value="'+sid+'"  />'+
+                                                        '   <input id="replyId" name="pid" type="hidden" value="'+replyId+'"  />'+
+                                                        '   <div class="form-group" style="display: '+(UuNickName==""?"block":"none")+'">'+
+                                                        '       <img id="reply-avatar" style="display: none" src="/img/user-default.png" height="42" width="42" class="avatar-42"/>'+
+                                                        '       <div>'+
+                                                        '           <input id="reply-qq" value="'+UuQQ+'" type="text" class="form-control" name="qq" placeholder="QQ（可获取头像和昵称）" />'+
+                                                        '       </div>'+
+                                                        '       <div>'+
+                                                        '           <input id="reply-nickname" value="'+UuNickName+'"  type="text" class="form-control" name="nickname" placeholder="自动获取" autocomplete="off" readonly />'+
+                                                        '       </div><br><br>'+
+                                                        '   </div>'+
+                                                        '   <div class="form-group" style="margin: 16px 0 0 0;">'+
+                                                        '       <div>'+
+                                                        '           <textarea name="content" id="reply-comment-textarea" class="form-control"></textarea>'+
+                                                        '       </div>'+
+                                                        '   </div>'+
+                                                        '   <div>'+
+                                                        '   <button id="submitReplyCommentBtn" type="button" class="commentbutton">发表评论</button>'+
+                                                        '   </div>'+
+                                                        '</form>'
+                                                    $(this).parent().after(replyForm);
+                                                    $("#reply-qq").blur(function(){
+                                                        var qq=$("#reply-qq").val();
+                                                        var nickname=$("#reply-nickname").val();
+                                                        if(qq.length > 0){
+                                                            if(!isNaN(qq)){
+                                                                Core.getQqInfo(qq,function (data) {
+                                                                    $("#reply-nickname").val(data.name);
+                                                                    $("#reply-avatar").attr("src","https://q1.qlogo.cn/g?b=qq&nk="+qq+"&s=100");
+                                                                });
+                                                            }else{
+                                                                layer.msg("QQ格式不正确")
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                                $(this).hide();
+                                                $(this).next().show();
+                                                $("#submitReplyCommentBtn").on('click',function () {
+                                                    if($("#reply-nickname").val()==""){
+                                                        layer.msg("请输入昵称")
+                                                        return;
+                                                    }else if($("#reply-comment-textarea").val()==""){
+                                                        layer.msg("说点什么吧")
+                                                        return;
+                                                    }
+                                                    Core.postAjax("/uu/api/comment/save",$("#reply-comment-form").serialize(),function (data) {
+
+                                                        layer.msg(data.msg, {
+                                                            offset: '30%',
+                                                            time: 800,
+                                                        }, function () {
+                                                            if(data.status==200){
+                                                                $("#reply-comment-textarea").val("");
+                                                                $("#reply-comment-form").hide();
+                                                                $(".cancel-reply").hide();
+                                                                $(".reply").show();
+                                                                handleCommentData(data.data,1);
+                                                                if(Core.getCookie("uu-username")==""){
+                                                                    Core.setCookie("uu-username",$("#reply-nickname").val(),30);
+                                                                    Core.setCookie("uu-qq",$("#reply-qq").val(),30);
+                                                                    Core.setCookie("uu-avatar",$("#reply-avatar").attr("src"),30);
+                                                                }
+                                                            }
+                                                        });
+                                                    })
+                                                })
+                                            })
+                                            $(".cancel-reply").click(function () {
+                                                $("#reply-comment-form").hide();
+                                                $(this).hide();
+                                                $(this).prev().show();
+                                            })
+                                            $(".comment-support").click(function () {
+                                                $thisLove = $(this).find(".count");
+                                                Core.postAjax("/uu/api/love",{"bizId":$thisLove.attr("biz-id"),"bizType":2},function (data) {
+                                                    if(data.status==200){
+                                                        $thisLove.text(parseInt($thisLove.text())+1);
+                                                    }
+                                                    layer.msg(data.msg);
+                                                });
+                                            })
+                                        }
+                                    })
+                                }
+                                init();
+                                /*提交评论*/
+                                $("#submitCommentBtn").click(function () {
+                                    if($("#nickname").val()==""){
+                                        layer.msg("请输入昵称")
+                                        return;
+                                    }else if($("#comment-textarea").val()==""){
+                                        layer.msg("说点什么吧")
+                                        return;
+                                    }
+                                    Core.postAjax("/uu/api/comment/save",$("#comment-form").serialize(),function (data) {
+                                        layer.msg(data.msg, {
+                                            offset: '30%',
+                                            time: 800
+                                        }, function () {
+                                            if(data.status==200){
+                                                $("#comment-textarea").val("");
+                                                handleCommentData(data.data);
+                                                $(".no-comment").hide();
+                                                if(UuNickName!=$("#nickname").val()||UuQQ!=$("#qq").val()){
+                                                    Core.setCookie("uu-username",$("#nickname").val(),30);
+                                                    Core.setCookie("uu-qq",$("#qq").val(),30);
+                                                    Core.setCookie("uu-avatar",$("#avatar").attr("src"),30);
+                                                }
+                                            }
+                                        });
+                                    })
+                                })
+                                /*点击用户名*/
+                                $("#user-name").click(function () {
+                                    if($("#user-info").hasClass("user-show")){
+                                        $("#user-info").slideUp();
+                                        $("#user-info").removeClass("user-show");
+                                    }else{
+                                        $("#user-info").slideDown();
+                                        $("#user-info").addClass("user-show");
+                                    }
+                                })
+
+                                function handleCommentData(data,isReply){
+                                    var html='<li>'+
+                                        '<div id="test" class="comment-body">'+
+                                        ' <div class="comment-user-img">'+
+                                        '	<img src="'+data.avatar+'" onerror="this.src=\'/img/user-default.png\'" />'+
+                                        '</div>'+
+                                        '<div class="comment-info">'+
+                                        '<div class="comment-top">'+
+                                        '<span class="comment-nickname"> <a href="javascript:void(0)">'+data.nickname+'</a> </span>'+
+                                        '<span class="comment-time">'+data.createTime+'</span>'+
+                                        ' </div>'+
+                                        ' <div class="comment-content">';
+                                    if(isReply){
+                                        var pNickname= $("#reply-comment-form").parent().find(".comment-top .comment-nickname>a").text();
+                                        var pText =  $("#reply-comment-form").parent().find(".comment-content>.comment-content-text").text();
+
+                                        html+='<div class="comment-parent">'+
+                                            '<div class="comment-parent-user">	'+
+                                            '<a class="comment-link" data-link="comment-'+data.pid+'">回复：'+pNickname+'</a>	'+
+                                            '</div>	'+
+                                            '<div class="comment-parent-content">'+pText+'</div>	'+
+                                            '</div>';
+                                    }
+                                    html+=data.content+
+                                        '</div>'+
+                                        '<div class="comment-footer"><span class="audit" style="color: rgb(241, 115, 106);">正在审核</span>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '</div>'+
+                                        '</li>';
+                                    $("#comment-ul").prepend(html);
+                                }
+                            })
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     
+     
+     
+     
+     
+     
       </ul>
   </div>
      
