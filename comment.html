@@ -18,6 +18,7 @@
 <script src="js/app.js"></script>
 <script src="js/comments.js"></script>
 <script src="js/nprogress.js"></script>
+<script src="js/Core.js"></script>
 
 <!--[if lt IE 9]>
 <script src="js/modernizr.js"></script>
@@ -152,14 +153,14 @@
      
 
      
+     
          <div class="article-section">
         <div class="Uu-box article-box">
             <div class="article-section-body">
                 <div class="Uu-article">
                    <h4>留下你的足迹吧</h4>
                    <p>❀感谢相遇❀</p>
-				   
-				   <p>╯︿╰评论功能还未开通</p>
+                   <p>╯︿╰评论功能还未开通</p>
       <div id="comment" class="comment comment-main">
                             <div style="color: rgb(241, 115, 106);margin-top: 20px;">❀发表评论❀</div>
                             <div style="margin-top: 20px;">
@@ -171,8 +172,8 @@
                                         <!-- <form class="commentform" action="/comment" method="post" id="comment-form"> -->
                                         <div style="width: 100%; margin-left: 5px;">
                                             <div class="form-group" id="user-info" style="display: block; overflow: hidden">
-                                                <input type="text" name="qq" id="qq" placeholder="QQ（可获取头像和昵称）"/>
-                                                <input type="text" name="nickname" id="nickname" placeholder="自动获取" autocomplete="off" readonly/>
+                                                <input type="text" name="qq" id="qq" placeholder="QQ（可获取头像）"/>
+                                                <input type="text" name="nickname" id="nickname" placeholder="试一下吧" autocomplete="off" readonly/>
                                             </div>
                                             
                                             <div class="comment-textarea" style="margin-top: 5px">
@@ -181,13 +182,95 @@
                                         </div>
                                     </div>
                                     <ul class="comment-submit">
+                                   
                                         <button id="submitCommentBtn" type="button" class="commentbutton">提交</button>
                                     </ul>
                                 </form>
                             </div>
-                            <ul id="comment-ul" class="comment"></ul>
-                        </div>
+                            <!-- <ul id="comment-ul" class="comment"></ul> -->
                         
+             
+                        
+                        
+        <ul class="comment" id="comment-ul">
+		<li>
+<!-- 			<div class="comment-body" id="comment-72">
+				<div class="comment-user-img">
+					<img onerror="this.src='/img/user-default.png'"
+						src="https://q1.qlogo.cn/g?b=qq&amp;nk=286861208&amp;s=100">
+				</div>
+				<div class="comment-info">
+					<div class="comment-top">
+						<span class="comment-nickname"> <a
+							href="javascript:void(0)">十二</a>
+						</span> <span class="comment-time">2019-10-23 23:03:58 </span>
+					</div>
+					<div class="comment-content">
+						<div class="comment-content-text">膜拜哟</div>
+					</div>
+					<div class="comment-footer">
+						<span class="reply" style="color: #a5a5f9" reply-id="72">回复</span>
+						<span class="cancel-reply" style="display: none; color: #a5a5f9;">取消回复</span>
+						<span class="comment-support"><span>赞 </span>
+						<span class="count" biz-id="72">0</span></span>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="comment-body" id="comment-68">
+				<div class="comment-user-img">
+					<img onerror="this.src='/img/user-default.png'"
+						src="https://q1.qlogo.cn/g?b=qq&amp;nk=401572008&amp;s=100">
+				</div>
+				<div class="comment-info">
+					<div class="comment-top">
+						<span class="comment-nickname"> <a
+							href="javascript:void(0)">爱忧</a>
+						</span> <span class="comment-time">2019-10-22 15:56:43 </span>
+					</div>
+					<div class="comment-content">
+						<div class="comment-content-text">我就想看看</div>
+					</div>
+					<div class="comment-footer">
+						<span class="reply" style="color: #a5a5f9" reply-id="68">回复</span>
+						<span class="cancel-reply" style="display: none; color: #a5a5f9;">取消回复</span>
+						<span class="comment-support"><span>赞 </span>
+						<span class="count" biz-id="68">0</span></span>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="comment-body" id="comment-39">
+				<div class="comment-user-img">
+					<img onerror="this.src='/img/user-default.png'"
+						src="https://q1.qlogo.cn/g?b=qq&amp;nk=654080169&amp;s=100">
+				</div>
+				<div class="comment-info">
+					<div class="comment-top">
+						<span class="comment-nickname"> 
+						<a href="javascript:void(0)">笨熊</a>
+						</span> <span class="comment-time">2019-10-21 17:41:27 </span>
+					</div>
+					<div class="comment-content">
+						<div class="comment-content-text">蛮漂亮的</div>
+					</div>
+					<div class="comment-footer">
+						<span class="reply" style="color: #a5a5f9" reply-id="39">回复</span>
+						<span class="cancel-reply" style="display: none; color: #a5a5f9;">取消回复</span>
+						<span class="comment-support"><span>赞 </span>
+						<span class="count" biz-id="39">0</span></span>
+					</div>
+				</div>
+			</div>
+		</li> -->
+		<div class="comment-more" id="comment-more" data-page="2">
+			<i class="ri-refresh-line"></i>
+		</div>
+		</ul>
+                     
+        </div>   
                         
                         
                         <script>
@@ -472,8 +555,8 @@
      
      
      
-      </ul>
-  </div>
+  <!--     </ul>
+  </div> -->
      
   <div class="sidebar">
     <div class="about">
@@ -489,7 +572,7 @@
       </ul>
     </div>
   </div>
-</div>
+  
 <footer>
   <!-- <p><a href="http://www.kebin.ml" target="_blank">风の小栈</a> <a href="/"></a></p> -->
   <p>Copyright © 2019 <a href="http://www.kebin.ml" target="_blank">风の小栈</a> All Rights Reserved<a href="/"></a></p>
